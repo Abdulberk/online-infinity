@@ -1,0 +1,22 @@
+@import "./components/sidebar/style.module.scss";
+@import "./components/content/style.module.scss";
+@import "./components/navbar/style.module.scss";
+
+
+.container {
+
+display: grid;
+width: 1440px;
+height: 1024px;
+
+grid-template-areas: "navbar navbar"
+                    "sidebar content";
+                    
+grid-template-columns: 280px 1048px;
+grid-template-rows: 100px 1024px 924px;
+
+
+background-color: $background-color;
+
+
+}
