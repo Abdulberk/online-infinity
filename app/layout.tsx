@@ -1,4 +1,6 @@
 import './globals.scss'
+import {Poppins} from '@next/font/google';
+
 
 export const metadata = {
   title: 'Create Next App',
