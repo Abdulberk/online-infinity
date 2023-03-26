@@ -1,7 +1,20 @@
 import React from 'react'
 import style from './style.module.scss'
 
-function Card() {
+
+export type CardNames = 'views' | 'members' | 'courses'
+
+export interface CardProps {
+  image: string
+  sticks?: string
+  type?: CardNames
+  count: number
+  title: string
+
+}
+
+
+function Card({image,sticks, type, count, title} : CardProps) {
   return (
     <div className = {style.card}>
         
@@ -12,18 +25,18 @@ function Card() {
         <div className = {style.textContainer } >
 
         <div className = {style.title} >
-          Total Users
+          {title}
 
           </div>
           <div className = {style.countText} >
-          18
+          {count}
             </div>
 
           </div>
 
 
           <div className = {style.icon} >
-          <img src = "/courses.svg" width = {56} height = {56} alt = "none" />
+          <img src = {image} width = {56} height = {56} alt = "none" />
 
           </div>
 
@@ -32,7 +45,7 @@ function Card() {
 
           <div className = {style.secondRowContainer} >
 
-        <img src = "/courses-sticks.svg" width = {161} height = {90} alt = "none" />
+        <img src = {sticks} width = {161} height = {90} alt = "none" />
 
 
 
