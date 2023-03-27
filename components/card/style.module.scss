@@ -37,9 +37,12 @@
             .textContainer {
                 display: flex;
                 flex-direction: column;
-                justify-content: center;
-                align-items: center;
+                justify-content: flex-start;
+
+                align-items: flex-start;
                 gap: 8px;
+                    
+                
 
                 .title {
 
@@ -70,15 +73,13 @@
                 }
 
 
-
-
-
             }
 
             .icon {
 
                 width: 56px;
                 height: 56px;
+                align-self: flex-start;
 
 
             }
