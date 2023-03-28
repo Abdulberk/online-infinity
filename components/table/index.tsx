@@ -3,16 +3,26 @@ import style from './style.module.scss'
 
 function Table() {
 
+ type Status = "approved" | "pending" | "rejected";
+
+  interface CourseProps {
+    title: string;
+    duration: number
+    date: string;
+    price: number
+    coursePic: string;
+    status: Status;
+    author: string;
+  }
+
 
   const courses = [
-    { title: "Course 1", duration: "1h 30m", date: "12/12/2020", price: "$100", author: "John Doeeeeee", status: "rejected" },
-    { title: "Course 2", duration: "1h 30m", date: "12/12/2020", price: "$100", author: "John Doe", status: "rejected" },
-    { title: "Course 3", duration: "1h 30m", date: "12/12/2020", price: "$100", author: "John Doe", status: "pending" },
-    { title: "Course 4", duration: "1h 30m", date: "12/12/2020", price: "$100", author: "John Doe", status: "approved" },
-    { title: "Course 5", duration: "1h 30m", date: "12/12/2020", price: "$100", author: "John Doe", status: "approved" },
-  ]
-
-
+    { title: "React", duration: 145, date: "12/12/2020", price: 100, author: "John Doe", status: "rejected",coursePic:"/react.png" },
+    { title: "Node", duration: 5, date: "12/12/2020", price: 100, author: "John Doe", status: "rejected",coursePic:"/react.png" },
+    { title: "javascript", duration: 80, date: "12/12/2020", price: 100, author: "John Doe", status: "pending",coursePic:"/react.png" },
+    { title: "Java", duration: 90, date: "12/12/2020", price: 100, author: "John Doe", status: "approved",coursePic:"/react.png" },
+    { title: "Photoshop", duration: 250, date: "12/12/2020", price: 100, author: "John Doe", status: "approved",coursePic:"/react.png" },
+  ] as CourseProps[]
 
   return (
     <div className={style.table}>
@@ -45,41 +55,59 @@ function Table() {
         <span className={style.horizontalDivider}></span>
 
         <div className={style.tableBody}>
-          <div className={style.tableBody__row}>
 
-               
+          {
+            courses.map((item, index) => (
+
+              <div className={style.tableBody__row} key={index}>
+            
              <div className = {style.coursePic} >
-              <img src="/react.png" width={48} height={48} alt="none" />
+              <img src={
+                item.coursePic ? item.coursePic : "/react.png"
+              } width={48} height={48} alt="none" />
               
               </div>
  
-
-
             <div className={style.tableBody__row__item}>
-              <span>{courses[0].title}</span>
+              <span>{
+                item.title
+
+                }</span>
             </div>
 
             <div className={style.tableBody__row__item}>
-              <span>{courses[0].duration}</span>
+              <span>{
+                item.duration
+                }</span>
             </div>
 
             <div className={style.tableBody__row__item}>
-              <span>{courses[0].date}</span>
+              <span>{
+                item.date
+                }</span>
             </div>
 
             <div className={style.tableBody__row__item}>
-              <span>{courses[0].price}</span>
+              <span>{
+                item.price
+                }</span>
             </div>
 
             <div className={style.tableBody__row__item}>
-              <span>{courses[0].author}</span>
+              <span>{
+                item.author
+                }</span>
             </div>
 
             <div className={style.tableBody__row__item}>
-            <img src="/rejected.svg" width={16} height={16} alt="none" />
+            <img src={
+                  item.status === "approved" ? "/approved.svg" : item.status === "pending" ? "/pending.svg" : "/rejected.svg"
+            } width={16} height={16} alt="none" />
               <span>
                
-                {courses[0].status}
+                {
+                  item.status
+                }
                 </span>
 
 
@@ -94,6 +122,13 @@ function Table() {
 
 
           </div>
+              
+
+            
+            
+            ))
+          }
+          
         </div>
       </div>
     </div>
